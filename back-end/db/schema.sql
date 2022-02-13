@@ -12,3 +12,4 @@ protein INT DEFAULT 0,
 added_sugar INT DEFAULT 0,
 is_healthy BOOLEAN
 );
+
