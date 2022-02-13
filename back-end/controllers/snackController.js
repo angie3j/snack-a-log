@@ -2,12 +2,11 @@
 const express = require('express');
 const snacks = express.Router();
 
-
 const {
     getAllSnacks,
     getSnack,
     deleteSnack,
-    updateSnack,
+    createSnack,
 } = require('../queries/snacks')
 
 // GET the entire snacks object
@@ -48,18 +47,13 @@ snacks.delete('/:id', async (request, response) => {
     response.status(200).json(deletedSnack);
 }); 
 
-//POST
-snacks.put('/', async (request, response) => {
-    const updatedSnack = await updateSnack(request.body);
-    console.log(updatedSnack);
-    // checking if snack is undefined
-    if (updatedSnack === 'undefined') {
-        response.status(422).json({error: 'Must include name field'});
-    return
-    }
-    response.status(200).json(updatedSnack);
-}); 
 
+// POST create a new snack
+snacks.post("/", async (req, res) => {
+    const createdSnack = await createSnack(res.body);
+    console.log(createdSnack);
+    createdSnack ? res.status(200).send(createdSnack) : res.status(404).json({ error: "no Snack found" });
+  });
 
 
 module.exports = snacks;
