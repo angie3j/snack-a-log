@@ -2,12 +2,11 @@
 const express = require('express');
 const snacks = express.Router();
 
-
 const {
     getAllSnacks,
     getSnack,
     deleteSnack,
-    updateSnack,
+    createSnack,
 } = require('../queries/snacks')
 
 // GET the entire snacks object
@@ -48,19 +47,25 @@ snacks.delete('/:id', async (request, response) => {
     response.status(200).json(deletedSnack);
 }); 
 
-//POST
-
-snacks.put('/:id', async (request, response) => {
-    const updatedSnack = await updateSnack(request.body);
-    console.log(updatedSnack);
-    // checking if snack is undefined
-    if (updatedSnack === 'undefined') {
-        response.status(422).json({error: 'Must include name field'});
-    return
-    }
-    response.status(200).json(updatedSnack);
-}); 
-
+// POST create a new snack
+snacks.post("/", async (req, res) => {
+    const createdSnack = await createSnack(res.body);
+    console.log(createdSnack);
+    createdSnack ? res.status(200).send(createdSnack) : res.status(404).json({ error: "no Snack found" });
+  });
+  
+// POST
+// snacks.post('/:id', async (request, response) => {
+//     const snack = await createSnack(request.params.id, request.body);
+//     // console.log(updatedSnack);
+//     // checking if snack is undefined
+//     if (snack.id) {
+//         // if there's an update send updatedSnack
+//         response.status(200).json(snack);
+//     } else {
+//     response.status(404).json({error: 'Must include name field'});
+//     };
+// }) 
 
 
 module.exports = snacks;

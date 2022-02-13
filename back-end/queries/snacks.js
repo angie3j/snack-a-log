@@ -19,7 +19,6 @@ const getSnack = async (id) => {
   }
 };
 
-
 const deleteSnack = async (id) => {
   try {
     const deletedSnack = await db.one(
@@ -30,26 +29,39 @@ const deleteSnack = async (id) => {
   }
 };
 
-const updateSnack = async (id, snack) => {
-  const { name, image, fiber, protein, added_sugar } = snack;
-  console.log('Update', snack);
+const createSnack = async (snack) => {
+  console.log(snack)
+  const { name, image, fiber, protein, added_sugar, is_healthy } = snack;
   try {
-    const updatedSnack = await db.one(
-      "UPDATE snacks SET name=$1, image=$2, fiber=$3, protein=$4, added_sugar=$5 WHERE id=$6 RETURNING *", [name, image, fiber, protein, added_sugar]
+    const newSnack = await db.one(
+      "INSERT INTO snacks (name, image, fiber, protein, added_sugar, is_healthy) VALUES ($1, $2, $3, $4, $5, $6 ) RETURNING * ",
+      [name, image, fiber, protein, added_sugar, is_healthy]
     );
-    console.log('Updating!', updatedSnack);
-    return updatedSnack 
+    return newSnack;
   } catch (error) {
-    console.log('error');
     return error;
-  } 
-
+  }
 };
 
+// const createSnack = async (id, snack) => {
+//   const { name, image, fiber, protein, added_sugar } = snack;
+//   console.log('Update', snack);
+//   try {
+//     const createSnack = await db.one(
+//       "UPDATE snacks SET name=$1, image=$2, fiber=$3, protein=$4, added_sugar=$5 WHERE id=$6 RETURNING *", [name, image, fiber, protein, added_sugar]
+//     );
+//     console.log('Updating!', createSnack);
+//     return createSnack 
+//   } catch (error) {
+//     console.log('error');
+//     return error;
+//   } 
+// };
 
 module.exports = { 
   getAllSnacks,
   getSnack,
   deleteSnack,
-  updateSnack, 
+  createSnack, 
+
 };
