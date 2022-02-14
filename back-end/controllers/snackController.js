@@ -49,7 +49,7 @@ snacks.delete('/:id', async (request, response) => {
 }); 
 
 //POST
-snacks.put('/', async (request, response) => {
+snacks.post('/', async (request, response) => {
     const updatedSnack = await updateSnack(request.body);
     console.log(updatedSnack);
     // checking if snack is undefined
