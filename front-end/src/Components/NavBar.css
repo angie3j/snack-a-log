@@ -1,0 +1,17 @@
+.Nav {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+  background: rgb(179, 173, 173);
+  /* create spacing around the 2 items*/
+  padding: 1em;
+  box-shadow: 2px 2px 4px grey;
+  margin-bottom: 3em;
+  display: flex;
+  /* create space in between 2 items */
+  justify-content: space-between;
+  /* align-items: right; */
+}
+
+.NewButton {
+  font-size: 18px;
+  margin: 1em;
+}
