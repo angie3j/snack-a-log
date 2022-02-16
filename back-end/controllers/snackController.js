@@ -96,17 +96,5 @@ snacks.post("/", async (req, res) => {
   });
 });
 
-// snacks.post("/", async (req, res) => {
-//   console.log("POST /snacks");
-//   const { body } = req;
-//   const createdSnack = await createSnack(req.body);
-
-    }
-    response.status(200).json(snack);
-}); 
-
-
-
-
 
 module.exports = snacks;
