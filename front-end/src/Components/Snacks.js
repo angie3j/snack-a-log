@@ -4,33 +4,34 @@ import Snack from "./Snack"
 
 function Snacks() {
     const URL = process.env.REACT_APP_API_URL;
-    const [snacks, setSnacks] = useState([]);
+    const [snacks, setSnacks] = useState({ payload:[] });
 
     useEffect(() => {
         axios
         .get(`${URL}/snacks`)
         .then((response) => {
-            setTransactions(response.data)
+            setSnacks(response.data)
         })
         .catch((e) => console.log("catch", e))
 }, [URL]);
 
-    const snacksDisplay = snacks.map((snack, id) => {
-        return (
-            <Snack 
-                snack={snack}
-                id={id}
-                key={id}
-            />
-        )
-    })
-
+    console.log(snacks)
+    
     return (
 
         <div>
-            { snacksDisplay }
+            { snacks.payload.map((snack) => {
+                return (
+                <Snack 
+                    snack={snack}
+                    id={snack.id}
+                    key={snack.id}
+                />
+            )
+            })
+    }
         </div>
     )
-
-
 }
+
+export default Snacks;
