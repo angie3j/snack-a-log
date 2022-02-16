@@ -48,12 +48,17 @@ snacks.delete('/:id', async (request, response) => {
 }); 
 
 
-// POST create a new snack
-snacks.post("/", async (req, res) => {
-    const createdSnack = await createSnack(res.body);
-    console.log(createdSnack);
-    createdSnack ? res.status(200).send(createdSnack) : res.status(404).json({ error: "no Snack found" });
-  });
+//POST
+snacks.post('/', async (request, response) => {
+    const updatedSnack = await updateSnack(request.body);
+    console.log(updatedSnack);
+    // checking if snack is undefined
+    if (updatedSnack === 'undefined') {
+        response.status(422).json({error: 'Must include name field'});
+    return
+    }
+    response.status(200).json(updatedSnack);
+}); 
 
 
 module.exports = snacks;
