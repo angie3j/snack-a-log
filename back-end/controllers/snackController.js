@@ -56,6 +56,7 @@ snacks.delete("/:id", async (request, response) => {
       .status(404)
       .json({ success: false, payload: "does not delete anything" });
     return;
+
   }
   response.status(200).json({
     success: true,
@@ -100,12 +101,12 @@ snacks.post("/", async (req, res) => {
 //   const { body } = req;
 //   const createdSnack = await createSnack(req.body);
 
-//   const finalObj = {};
-//   if (createdSnack.id) {
-//     finalObj.success = true;
-//     finalObj.payload = createdSnack;
-//   }
-//   res.status(200).json(finalObj);
-// });
+    }
+    response.status(200).json(snack);
+}); 
+
+
+
+
 
 module.exports = snacks;
