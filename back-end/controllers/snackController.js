@@ -2,12 +2,11 @@
 const express = require('express');
 const snacks = express.Router();
 
-
 const {
     getAllSnacks,
     getSnack,
     deleteSnack,
-    updateSnack,
+    createSnack,
 } = require('../queries/snacks')
 
 // GET the entire snacks object
@@ -48,6 +47,7 @@ snacks.delete('/:id', async (request, response) => {
     response.status(200).json(deletedSnack);
 }); 
 
+
 //POST
 snacks.post('/', async (request, response) => {
     const updatedSnack = await updateSnack(request.body);
@@ -59,7 +59,6 @@ snacks.post('/', async (request, response) => {
     }
     response.status(200).json(updatedSnack);
 }); 
-
 
 
 module.exports = snacks;
