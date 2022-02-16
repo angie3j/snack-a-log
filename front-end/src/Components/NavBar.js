@@ -6,13 +6,13 @@ function NavBar() {
         <nav className='Nav'>
 
             <h1>Snacks</h1>
-            <button>
                 <Link
                 style={{ color: 'white' }}
-                to='/songs'>NEW
+                to='/snacks/new'>New
                 </Link>
-            </button>
 
         </nav>
     )
 }
+
+export default NavBar;
