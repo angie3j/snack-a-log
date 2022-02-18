@@ -10,7 +10,7 @@ function Snack({ snack }) {
           </p>
 
           <p>
-            <Link style={{ color: "#66A3A3" }} to={`/snack/${snack.id}`}>
+            <Link style={{ color: "#66A3A3" }} to={`/snacks/${snack.id}`}>
               {snack.name}
             </Link>
           </p>

@@ -96,5 +96,4 @@ snacks.post("/", async (req, res) => {
   });
 });
 
-
 module.exports = snacks;

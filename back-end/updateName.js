@@ -1,3 +1,4 @@
+
 const updatedSnackName = (snack) => {
   const snackName = snack.name;
   const nameArray = snackName.split(" ");

@@ -6,10 +6,14 @@ function NavBar() {
         <nav className='Nav'>
 
             <h1>Snacks</h1>
-                <Link
-                style={{ color: 'white' }}
-                to='/snacks/new'>New
-                </Link>
+            <Link to="/songs">
+        <button style={{ color: "white" }}>INDEX</button>
+      </Link>
+
+      <Link to="/songs/new">
+        <button style={{ color: "white" }}>NEW</button>
+      </Link>
+
 
         </nav>
     )

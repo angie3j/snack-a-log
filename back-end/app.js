@@ -12,7 +12,7 @@ app.use(express.json());
 app.use("/snacks", snackController);
 
 // ROUTES
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   res.send("Get Snack'n at Snack-a-log!");
 });
 

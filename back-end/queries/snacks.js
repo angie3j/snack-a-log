@@ -1,6 +1,6 @@
-const confirmHealth = require("../confirmHealth.js");
+// const confirmHealth = require("../confirmHealth.js");
 const db = require("../db/dbConfig.js");
-const updatedSnackName = require("../updateName.js");
+// const updatedSnackName = require("../updateName.js");
 
 // All snacks are shown
 const getAllSnacks = async () => {
